@@ -1,0 +1,87 @@
+# app section
+# See also:
+#
+# bin/compile
+# deploy/default/docker-compose.yaml
+#
+# Eval functions defined at lib_env_utils.sh
+# spinal_to_camelcase() {
+#     IFS=- read -ra str <<<"$1"
+#     printf '%s' "${str[@]^}"
+# }
+
+# spinal_to_lower() {
+#     IFS=- read -ra str <<<"$1"
+#     printf '%s' "${str[@],,}"
+# }
+
+# spinal_to_upper() {
+#     IFS=- read -ra str <<<"$1"
+#     printf '%s' "${str[@]^^}"
+# }
+
+# WARNING: App name MUST BE in spinal case format.
+# This is a spinal-case-example
+
+LONG_APP_NAME=cod-app
+SHORT_APP_NAME=app
+
+LONG_APP_NAME_SPINAL=$LONG_APP_NAME
+SHORT_APP_NAME_SPINAL=$SHORT_APP_NAME
+
+LONG_APP_NAME_UPPER=$(lib_string_utils.spinal_to_upper $LONG_APP_NAME_SPINAL)
+LONG_APP_NAME_LOWER=$(lib_string_utils.spinal_to_lower $LONG_APP_NAME_SPINAL)
+LONG_APP_NAME_CAMEL=$(lib_string_utils.spinal_to_camelcase $LONG_APP_NAME_SPINAL)
+SHORT_APP_NAME_UPPER=$(lib_string_utils.spinal_to_upper $SHORT_APP_NAME_SPINAL)
+SHORT_APP_NAME_LOWER=$(lib_string_utils.spinal_to_lower $SHORT_APP_NAME_SPINAL)
+SHORT_APP_NAME_CAMEL=$(lib_string_utils.spinal_to_camelcase $SHORT_APP_NAME_SPINAL)
+
+APP_NAME=$LONG_APP_NAME_LOWER
+
+APP_PROJECT_NAME=$APP_NAME
+APP_PROJECT_PROJECTEBASE_NAME=$LONG_APP_NAME_LOWER
+APP_PROJECT_DB_NAME=$LONG_APP_NAME_LOWER
+APP_PROJECT_BUNDLE_NAME=$LONG_APP_NAME_LOWER
+APP_PROJECT_DEPLOYFOLDER_NAME=$LONG_APP_NAME_LOWER
+APP_PROJECT_USERNAME=$LONG_APP_NAME_LOWER
+
+APP_PROJECT_VERSION=1.0
+APP_PROJECT_TAG=1.0.0
+
+
+# set app project path
+#
+# if you want to use an independent source folder
+#   APP_PROJECT_PATH=${PROJECT_PATH}/..
+# else if you want to use git submodule feature
+#   APP_PROJECT_PATH=${PROJECT_PATH}/source/${APP_NAME}
+#
+
+APP_PROJECT_PATH=${PROJECT_PATH}
+
+APP_PROJECT_FOLDER=${APP_PROJECT_PATH}/src
+
+
+
+# conf scripts project if needed
+
+
+# db scripts project if needed
+
+# db patch scripts project if needed
+
+# db properties scripts project if needed
+
+
+# Former default path. /app value deprecated, use ${APP_PROJECT_PATH}/app/${APP_PROJECT_NAME} instead.
+# However you may use this for convenience
+# APP_FILES_BASE_FOLDER=/app/${APP_PROJECT_NAME}
+
+# Recommended path
+# APP_FILES_BASE_FOLDER=${APP_PROJECT_PATH}/app/${APP_PROJECT_NAME}
+APP_FILES_BASE_FOLDER=${APP_PROJECT_PATH}/data
+APP_FILES_SUBFOLDER_ARRAY="assets bundle var"
+
+
+
+# end app section
